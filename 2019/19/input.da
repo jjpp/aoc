@@ -1,0 +1,157 @@
+0000: (  109) add_dp 424			// dp = 424
+
+0002: (  203) input mem[1 + dp]			// p1 = x
+0004: (21101) add 11, 0 -> mem[0 + dp]		// call check_positive
+0008: ( 1105) jnz 1 -> 282
+
+0011: (21102) mul 18, 1 -> mem[0 + dp]		// call abs
+0015: ( 1105) jnz 1 -> 259
+// 
+0018: ( 1201) add mem[1 + dp], 0 -> mem[221]	// mem[221] = retval
+
+0022: (  203) input mem[1 + dp]			// p1 = y 
+
+0024: (21102) mul 1, 31 -> mem[0 + dp]		// call check_positive
+0028: ( 1105) jnz 1 -> 282
+
+0031: (21101) add 38, 0 -> mem[0 + dp]		// call abs
+0035: ( 1105) jnz 1 -> 259
+
+0038: (20102) mul 1, mem[23] -> mem[2 + dp]	// p2 = 1*1
+0042: (21202) mul mem[1 + dp], 1 -> mem[3 + dp]	// p3 = y
+0046: (21102) mul 1, 1 -> mem[1 + dp]		// p1 = 1
+
+0050: (21101) add 0, 57 -> mem[0 + dp]		// call 303
+0054: ( 1106) jz 0 -> 303			
+
+0057: ( 1201) add mem[1 + dp], 0 -> mem[222]	// mem[222] = y * 1 * 1
+
+0061: (21001) add mem[221], 0 -> mem[3 + dp]	// p3 = x
+0065: (21002) mul mem[221], 1 -> mem[2 + dp]	// p2 = x
+0069: (21101) add 0, 259 -> mem[1 + dp]		// p1 = 259
+0073: (21102) mul 80, 1 -> mem[0 + dp]		// call 225
+0077: ( 1106) jz 0 -> 225
+
+0080: (21102) mul 1, 93 -> mem[2 + dp]		// p2 = 93
+0084: (21101) add 0, 91 -> mem[0 + dp]		// call 303
+0088: ( 1105) jnz 1 -> 303
+
+0091: ( 2102) mul 1, mem[1 + dp] -> mem[223]	// mem[223] = retval
+0095: (21002) mul mem[222], 1 -> mem[4 + dp]	// p4 = mem[222]
+0099: (21101) add 0, 259 -> mem[3 + dp]		// p3 = 259
+0103: (21102) mul 225, 1 -> mem[2 + dp]		// p2 = 225
+0107: (21101) add 0, 225 -> mem[1 + dp]		// p1 = 225
+0111: (21102) mul 1, 118 -> mem[0 + dp]		// call 225
+0115: ( 1105) jnz 1 -> 225
+
+0118: (21001) add mem[222], 0 -> mem[3 + dp]	// p3 = mem[222]
+0122: (21101) add 0, 73 -> mem[2 + dp]		// p2 = 73
+0126: (21101) add 133, 0 -> mem[0 + dp]		// call 303
+0130: ( 1105) jnz 1 -> 303
+
+0133: (21202) mul mem[1 + dp], -1 -> mem[1 + dp]	// p1 = -p1
+0137: (22001) add mem[223], mem[1 + dp] -> mem[1 + dp]	// p1 = p1 + mem[223]
+0141: (21101) add 148, 0 -> mem[0 + dp]			// call 259
+0145: ( 1106) jz 0 -> 259
+
+0148: ( 2102) mul 1, mem[1 + dp] -> mem[223]	// mem[223] = retval
+0152: (20101) add 0, mem[221] -> mem[4 + dp]	// p4 = mem[221]
+0156: (21001) add mem[222], 0 -> mem[3 + dp]	// p3 = mem[222]
+0160: (21102) mul 1, 11 -> mem[2 + dp]		// p2 = 11
+0164: ( 1001) add mem[132], -2 -> mem[224]	// mem[224] = mem[132] - 2
+0168: ( 1002) mul mem[224], 2 -> mem[224]	// mem[224] = mem[224] * 2
+0172: ( 1001) add mem[224], 3 -> mem[224]	// mem[224] = mem[224] + 3
+0176: ( 1002) mul mem[132], -1 -> mem[132]	// mem[132] = -mem[132]
+0180: (    1) add mem[224], mem[132] -> mem[224]	// mem[224] = mem[224] + mem[132]
+0184: (21001) add mem[224], 1 -> mem[1 + dp]	// p1 = mem[224] + 1
+
+0188: (21102) mul 195, 1 -> mem[0 + dp]		// call 225
+0192: (  105) jnz 1 -> mem[109]
+
+0195: (20207) lt? mem[1 + dp], mem[223] -> mem[2 + dp]	// p2 = (retval < mem[223]) ? 1 : 0
+0199: (21002) mul mem[23], 1 -> mem[1 + dp]	// p1 = 1
+0203: (21101) add -1, 0 -> mem[3 + dp]		// p3 = -1
+0207: (21101) add 214, 0 -> mem[0 + dp]		// call 303
+0211: ( 1105) jnz 1 -> 303
+
+0214: (22101) add 1, mem[1 + dp] -> mem[1 + dp] // retval += 1
+0218: (  204) output mem[1 + dp]		// output retval
+0220: (   99) halt				// halt
+
+0221: (    0) ???
+0222: (    0) ???
+0223: (    0) ???
+0224: (    0) ???
+
+0225: (  109) add_dp 5
+0227: ( 2101) add 0, mem[-4 + dp] -> mem[249]		// mem[249] = i1
+0231: (22101) add 0, mem[-3 + dp] -> mem[1 + dp]	// p1 = i2
+0235: (22101) add 0, mem[-2 + dp] -> mem[2 + dp]	// p2 = i3
+0239: (21201) add mem[-1 + dp], 0 -> mem[3 + dp]	// p3 = i4
+0243: (21101) add 250, 0 -> mem[0 + dp]
+0247: ( 1106) jz 0 -> 225				// if (i1 == 0) call 225
+0250: (22101) add 0, mem[1 + dp] -> mem[-4 + dp]	// retval = i2
+0254: (  109) add_dp -5
+0256: ( 2106) jz 0 -> mem[0 + dp]			// return
+
+abs:
+0259: (  109) add_dp 3						// 
+0261: (22107) lt? 0, mem[-2 + dp] -> mem[-1 + dp]		// 0 < mem[425] -> mem[426]
+0265: (21202) mul mem[-1 + dp], 2 -> mem[-1 + dp]		// mem[426] * 2 -> mem[426]
+0269: (21201) add mem[-1 + dp], -1 -> mem[-1 + dp]		// mem[426] - 1 -> mem[426]
+0273: (22202) mul mem[-1 + dp], mem[-2 + dp] -> mem[-2 + dp]	// mem[425] * mem[426] -> mem[425]
+0277: (  109) add_dp -3						//
+0279: ( 2105) jnz 1 -> mem[0 + dp]				// return
+
+
+exit 0 if p < 0
+0282: (  109) add_dp 3						// 
+0284: (21207) lt? mem[-2 + dp], 0 -> mem[-1 + dp]		// i1 < 0 ? -> i2
+0288: ( 1206) jz mem[-1 + dp] -> 294				// if i1 >= 0 jmp 294
+0291: (  104) output 0						// x < 0 -> output 0
+0293: (   99) halt						// halt
+0294: (22101) add 0, mem[-2 + dp] -> mem[-2 + dp]		// r1 = i1
+0298: (  109) add_dp -3						// r2 = 0
+0300: ( 2105) jnz 1 -> mem[0 + dp]				// return
+
+
+
+0303: (  109) add_dp 5
+0305: (22207) lt? mem[-3 + dp], mem[-4 + dp] -> mem[-1 + dp]	// i4 = (i2 < i1) ? 1 : 0
+0309: ( 1206) jz mem[-1 + dp] -> 346				// if (i1 >= i2) jmp 346
+0312: (22201) add mem[-4 + dp], mem[-3 + dp] -> mem[-4 + dp]	// i1 = i1 + i2
+0316: (21202) mul mem[-3 + dp], -1 -> mem[-1 + dp]		// i4 = -i2
+0320: (22201) add mem[-4 + dp], mem[-1 + dp] -> mem[2 + dp]	// p2 = i1 + i4 (= orig i1)
+0324: (21202) mul mem[2 + dp], -1 -> mem[-1 + dp]		// i4 = -p2 
+0328: (22201) add mem[-4 + dp], mem[-1 + dp] -> mem[1 + dp]	// p1 = i1 + i4 (= orig i2)
+0332: (21202) mul mem[-2 + dp], 1 -> mem[3 + dp]		// p3 = i3
+0336: (21102) mul 1, 343 -> mem[0 + dp] 			// call 303
+0340: ( 1106) jz 0 -> 303 
+
+0343: ( 1106) jz 0 -> 415					// jmp 415
+
+0346: (22207) lt? mem[-2 + dp], mem[-3 + dp] -> mem[-1 + dp]	// i4 = (i3 < i2) ? 1 : 0
+0350: ( 1206) jz mem[-1 + dp] -> 387				// if (i2 >= i3) jmp 387
+0353: (22201) add mem[-3 + dp], mem[-2 + dp] -> mem[-3 + dp]	// i2 = i2 + i3 
+0357: (21202) mul mem[-2 + dp], -1 -> mem[-1 + dp]		// i4 = -i3
+0361: (22201) add mem[-3 + dp], mem[-1 + dp] -> mem[3 + dp]	// p3 = i4 + i2 (== orig i2)
+0365: (21202) mul mem[3 + dp], -1 -> mem[-1 + dp]		// i4 = -p3
+0369: (22201) add mem[-3 + dp], mem[-1 + dp] -> mem[2 + dp]	// p2 = i4 + i2 (== orig i3)
+0373: (22101) add 0, mem[-4 + dp] -> mem[1 + dp]		// p1 = i1
+0377: (21102) mul 1, 384 -> mem[0 + dp]				// call 303
+0381: ( 1105) jnz 1 -> 303
+
+0384: ( 1105) jnz 1 -> 415					// jmp 415
+
+0387: (21202) mul mem[-4 + dp], -1 -> mem[-4 + dp]		// i1 = -i1
+0391: (22201) add mem[-4 + dp], mem[-3 + dp] -> mem[-4 + dp]	// i1 = i1 + i2 (= i2 - i1)
+0395: (22202) mul mem[-3 + dp], mem[-2 + dp] -> mem[-2 + dp]	// i3 = i3 * i2 
+0399: (22202) mul mem[-2 + dp], mem[-4 + dp] -> mem[-4 + dp]	// i1 = i1 * i3 (= (i2 - i1) * i2 * i3 = i2 * i2 * i3 - i1 * i2 * i3
+0403: (22202) mul mem[-3 + dp], mem[-2 + dp] -> mem[-3 + dp]	// i2 = i2 * i3 (= (i2 * i2 * i3)
+0407: (21202) mul mem[-4 + dp], -1 -> mem[-2 + dp]		// i3 = -i1
+0411: (22201) add mem[-3 + dp], mem[-2 + dp] -> mem[1 + dp]	// p1 = i2 - i1 (= i1 * i2 * i3)
+
+0415: (21202) mul mem[1 + dp], 1 -> mem[-4 + dp]		// r1 = p1
+0419: (  109) add_dp -5
+0421: ( 2105) jnz 1 -> mem[0 + dp]				// return
+
