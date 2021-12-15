@@ -16,14 +16,12 @@ def iterate(fs):
             out.append(f - 1)
     return out
 
-for x in range(80):
-    fish = iterate(fish)
+f = [8]
+fm = []
+for x in range(256):
+    print(x, len(f))
+    fm.append(len(f))
+    f = iterate(f)
 
+print(fm)
 
-print(len(fish))
-
-for x in range(256 - 80):
-    fish = iterate(fish)
-
-
-print(len(fish))
