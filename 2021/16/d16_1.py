@@ -1,7 +1,7 @@
 #!/usr/bin/python3 
 
 import sys
-import functools
+import math
 
 lns = [l.strip() for l in sys.stdin]
 
@@ -60,7 +60,7 @@ def run(tree):
     if tree[1] == 0:
         return sum(subs)
     if tree[1] == 1:
-        return functools.reduce(lambda a, x: x*a, subs)
+        return math.prod(subs)
     if tree[1] == 2:
         return min(subs)
     if tree[1] == 3:
