@@ -1,15 +1,13 @@
 #!/usr/bin/python3 
 
 import sys
+import functools
 
 lns = [l.strip() for l in sys.stdin]
 
-l = "".join([("0000{0:b}".format(int(c, 16)))[-4:] for c in lns[0]])
-
-print(l)
+l = "".join([f"{int(c, 16):04b}" for c in lns[0]])
 
 def take(bits, n):
-    print(f"taking {n} bits: '{bits[0:n]}', returning '{int(bits[0:n], 2)}'")
     return (int(bits[0:n], 2), bits[n:])
 
 
@@ -20,13 +18,12 @@ def parse(bits):
 
     if typ == 4:
         n = 0
-        (b, bits) = take(bits, 5)
-        while b > 15:
+        while True:
+            (b, bits) = take(bits, 5)
             n *= 16
             n += (b % 16)
-            (b, bits) = take(bits, 5)
-        n *= 16
-        n += (b % 16)
+            if b < 16:
+                break
 
         return ((ver, typ, n), bits)
 
@@ -52,11 +49,7 @@ def parse(bits):
 (tree, bits) = parse(l)
 
 def sumver(tree):
-    print(tree)
-    if tree[1] == 4:
-        return tree[0]
-
-    return sum([sumver(t) for t in tree[2]]) + tree[0]
+    return tree[0] + (0 if tree[1] == 4 else sum([sumver(t) for t in tree[2]]))
 
 print(sumver(tree))
 
@@ -67,10 +60,7 @@ def run(tree):
     if tree[1] == 0:
         return sum(subs)
     if tree[1] == 1:
-        p = 1
-        for x in subs:
-            p *= x
-        return p
+        return functools.reduce(lambda a, x: x*a, subs)
     if tree[1] == 2:
         return min(subs)
     if tree[1] == 3:
@@ -85,3 +75,4 @@ def run(tree):
     raise "Unknown type " + tree
 
 print(run(tree))
+
