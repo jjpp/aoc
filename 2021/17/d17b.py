@@ -36,6 +36,7 @@ def check(dx, dy, t):
 
 out = None
 speeds = {}
+cnt = 0
 
 for x in range(1, xs[1] + 1):
     maxx = x * (x + 1) / 2
@@ -45,6 +46,7 @@ for x in range(1, xs[1] + 1):
     for t in range(1, 1000):
         drag = t * (t-1) / 2
         _x = maxx if t > x else t*x - drag
+        cnt += 1
         if not (xs[0] <= _x <= xs[1]):
             continue
 
@@ -72,3 +74,4 @@ for x in range(1, xs[1] + 1):
 
 print(out)
 print(len(speeds))
+print(cnt)
