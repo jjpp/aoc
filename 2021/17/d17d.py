@@ -9,11 +9,11 @@ ls = lns[0].split(' ')
 xs = [int(x) for x in ls[2].strip(',').split('=')[1].split('..')]
 ys = [int(y) for y in ls[3].split('=')[1].split('..')]
 
-def check(dx, dy, t):
+def check(dx, dy):
     x = 0
     y = 0
     maxy = 0
-    for z in range(t):
+    while True:
         if (dx > 0):
             x += dx
             dx -= 1
@@ -30,18 +30,16 @@ def check(dx, dy, t):
         if (xs[0] <= x <= xs[1]) and (ys[0] <= y <= ys[1]):
             return maxy
 
-    return None
-
 out = None
-speeds = {}
+speeds = set()
 count = 0
 
 for x in range(1, max(xs)+1):
     for y in range(ys[0], -ys[0] + 1):
         count += 1
-        c = check(x, y, 1000)
+        c = check(x, y)
         if not c == None:
-            speeds[x, y] = 1
+            speeds.add((x, y))
             if out == None or c > out:
                 out = c
 
@@ -50,6 +48,3 @@ for x in range(1, max(xs)+1):
 print(out)
 print(len(speeds))
 print(count)
-#for (x, y) in speeds.keys():
-#    print(f"{x},{y}")
-#
