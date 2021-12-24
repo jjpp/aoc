@@ -20,13 +20,6 @@ def val(r, b):
 def parse(lns):
     return [l.split(' ') for l in lns]
 
-def pp(z):
-    o = ""
-    while z > 0:
-        o += chr(z % 26 + ord('A'))
-        z //= 26
-    return o
-
 def run(code, param):
     regs = { 'x': 0, 'y': 0, 'z': 0, 'w': 0 }
     ip = 0
@@ -34,18 +27,14 @@ def run(code, param):
         if c[0] == 'inp':
             regs[c[1]] = int(param[ip])
             ip += 1
-            #print(regs, ip - 1)
         else:
             regs[c[1]] = fun[c[0]](regs, c[1], c[2])
-        #print(f"{c[1]} = {regs[c[1]]} ({c}) {regs}")
-        #if c[1] == 'z':
-            #print(pp(regs['z']))
 
     print(regs)
     return regs['z'] == 0
 
 code = parse(lns)
 
-run(code, '92915979999498')
-run(code, '21611513911181')
+assert run(code, '92915979999498')
+assert run(code, '21611513911181')
 
