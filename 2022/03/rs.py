@@ -8,13 +8,10 @@ score = 0
 
 for rs in ls:
     (f, s) = (rs[0:int(len(rs) / 2)], rs[int(len(rs) / 2):])
-    print(f)
-    print(s)
     seen = {}
     for i in f:
         if i in s and not i in seen:
             seen[i] = True
-            print(i)
             if i.islower():
                 score += ord(i) - ord('a') + 1
             else:
