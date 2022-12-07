@@ -32,8 +32,8 @@ def it(step, default, g):
         for y in range(-2*step, len(lns) + 1 + 2*step):
             o[y, x] = 1 if imp[idx(x, y, g)] == "#" else 0
             l += "#" if o[y, x] == 1 else "."
-        print(l)
-    print()
+        #print(l)
+    #print()
             
 
     return o

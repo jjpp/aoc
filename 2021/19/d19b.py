@@ -64,6 +64,8 @@ sensors = set([tuple(t) for t in scrs[0]])
 scanners[0] = (0, 0, 0)
 dirs[0] = 0
 
+count = 0
+
 def can_match(s, i, sensors):
     print(f"Matching scanner {i} with existing {len(sensors)} sensors")
     for d in range(24):
@@ -78,6 +80,8 @@ def can_match(s, i, sensors):
                 # fixme: check if nothing in range that should not be?
 
                 #print(f"        {len(all_bs & sensors)} common beacons")
+                global count
+                count += 1
 
                 if len(all_bs & sensors) > 11:
                     print(f"Scanner {i} at {x},{y},{z} ({d})")
@@ -98,6 +102,7 @@ while len(q) > 0:
 print(len(sensors))
 
 print(scanners)
+print(count)
 
 mhd = 0
 
