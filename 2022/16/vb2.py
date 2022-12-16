@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
 # slower version of second part.
-# did not manage to go through the state space
-# in 40 minutes on a random i5 t480 laptop
+# took ~50min to complete on a random i5 t480 laptop
 # yet, the best was printed out in a few minutes
 
 import sys
