@@ -20,7 +20,6 @@ for l in ls:
     r = int(d_[4][5:-1])
     g[v] = r
     e[v] = d_[9].split(', ')
-    d[v] = { t: 1 for t in e[v] }
 
 nodes = [v for v in g if g[v] > 0]
 nodes += ['AA']
