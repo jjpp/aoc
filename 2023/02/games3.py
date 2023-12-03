@@ -3,7 +3,7 @@
 import sys
 from collections import Counter
 from functools import reduce
-from operator import mul
+from operator import mul, or_
 
 ls = [l.strip() for l in sys.stdin]
 
@@ -14,16 +14,15 @@ max_color = Counter({
 })
 
 def is_possible(g):
-    pairs = g.replace(";", ",").replace(":", ",").split(",")
+    pairs = [p.split() for p in g.replace(";", ",").replace(":", ",").split(",")]
 
-    game_id = int(pairs[0].split()[1])
+    game_id = int(pairs.pop(0)[1])
 
-    m = reduce(lambda a, b: a | b, [Counter({p.split()[1]: int(p.split()[0])}) for p in pairs[1:]])
+    m = reduce(or_, [Counter({p[1]: int(p[0])}) for p in pairs])
 
     return (game_id if m <= max_color else 0, reduce(mul, m.values()))
 
 
-print(sum([is_possible(l)[0] for l in ls]))
-print(sum([is_possible(l)[1] for l in ls]))
+print(reduce(lambda a, b: tuple(map(sum, zip(a, b))), [is_possible(l) for l in ls]))
 
 
