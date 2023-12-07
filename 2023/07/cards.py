@@ -7,21 +7,28 @@ ls = [l.strip().split() for l in sys.stdin]
 
 def type(a):
     c = Counter(a)
-    mc = c.most_common()
-    if mc[0][1] == 5:
+    best = c.most_common()[0][1]
+
+    if best == 5:
         return 1
-    if mc[0][1] == 4:
+
+    second_best = c.most_common()[1][1]
+
+    if best == 4:
         return 2
-    if mc[0][1] == 3:
-        if mc[1][1] == 2:
+
+    if best == 3:
+        if second_best == 2:
             return 3
         else:
             return 4
-    if mc[0][1] == 2:
-        if mc[1][1] == 2:
+
+    if best == 2:
+        if second_best == 2:
             return 5
         else:
             return 6
+
     return 7
 
 ranks = "23456789TJQKA"
