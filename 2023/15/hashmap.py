@@ -37,9 +37,9 @@ for c in l.split(','):
 s = 0
 for box in b:
     slot = 1
-    # dicts in python3 remember the order of addion
+    # dicts in python3 remember the order of adding the keys
     for lens in b[box]:
-        s += (int(box) + 1) * slot * b[box][lens]
+        s += (box + 1) * slot * b[box][lens]
         slot += 1
 
 print(s)
