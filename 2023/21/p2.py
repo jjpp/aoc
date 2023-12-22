@@ -40,17 +40,13 @@ def print_submaps(q_):
             out += "%6d" % (sum([1 if (x + x_ * X, y + y_ * Y, step % 2) in d else 0 for x in range(0, X) for y in range(0, Y)]))
         print(out)
 
-# 196:
-# 3x3
-# 327
-# 5x5
+#      0     0     0     0     0     0
+#      0     0   937  5544   930     0
+#      0   937  6453  7410  6454   930
+#      0  5553  7410  7363  7410  5540
+#      0   949  6463  7410  6449   954
+#      0     0   949  5549   954     0
 
-#   -4-2 0 1 3
-#-4  0 0 1 0 0  327: m = n = 1
-#-2  0 n m n 0  458: m = 3, n = 2  n = (s - 65) / 131
-# 0  1 m 1 n 1  589: m = 6, n = 3  m = n * (n + 1) / 2
-# 1  0 n m n 0
-# 3  0 0 1 0 0 
 
 maps = [
         (0, 0, lambda n: (n - 1) * (n - 1)),
@@ -87,7 +83,7 @@ while not q.empty():
             n = int((steps_to_go - HALF) / ONE)
             s_ = 0
 
-            # print_submaps(10)
+            # print_submaps(3)
 
             for mp in maps:
                 mult = mp[2](n)
