@@ -72,20 +72,6 @@ for i in range(0, len(p)):
     dp[p[i]] = { k: dp[p[i]][k] for k in sorted(dp[p[i]].keys(), key = lambda x: -dp[p[i]][x]) }
 
 
-eir_cache = {}
-def end_is_reachable(s, seen):
-    k = str(s) + str(seen)
-    if k in eir_cache:
-        return eir_cache[k]
-    if E in s:
-        eir_cache[k] = True
-        return True
-    if len(s) == 0:
-        eir_cache[k] = False
-        return False
-    n = set.union(*[keyset[t] for t in s]) - seen
-    return end_is_reachable(n, seen | n)
-
 max_path = None
 max_len = 0
 
@@ -109,18 +95,20 @@ def longest(a, dist, seen, path):
     if len(keyset[a] - seen) == 0:
         return -1
 
-    if not end_is_reachable(set([a]), seen):
-        return -1
-
     l = max([longest(b, dist + dp[a][b], seen | set([b]), [*path, b]) for b in dp[a] if b not in seen])
     return l
 
 
-print(dp)
-print(len(dp))
-print(sum([len(dp[a]) for a in dp]))
+#print(dp)
+#print(len(dp))
+#print(sum([len(dp[a]) for a in dp]))
 print("finding longest paths from", S, "to", E)
 print(longest(S, 0, set(), [S]))
+
+exit(0)
+
+# bonus-track. your graph as graphviz graph.
+# I used xdot -fneato to visualize that. 
 
 print("graph {")
 print(f"\"{S}\" [label = \"S\"]")
