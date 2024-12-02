@@ -99,6 +99,8 @@ def complete(state, k):
             add_consumed(k, s_)
 
 for k in range(0, len(s)):
+    print()
+    print(k,": ")
     for state in s[k]:
         if not completed(state):
             next_elem = next_of(state)
@@ -111,9 +113,13 @@ for k in range(0, len(s)):
 
 root = None
 for s_ in s[-1]:
+    print(s_)
+    print(s_[0])
     if s_[0] == "e'" and completed(s_):
         print("ok:", s_)
         root = s_
+print(s)
+print(root)
 
 def build_trees(state, k):
     print("build_trees", state, k)
@@ -151,10 +157,9 @@ def build_trees_helper(children, state, rule_index, end_column):
         for sub_tree in build_trees(st, end_column):
             print("    scanning subtrees", sub_tree)
             for node in build_trees_helper([sub_tree] + children, state, rule_index - 1, st[3]):
-                print("appending node", node
+                print("appending node", node)
                 outputs.append(node)
     return outputs
-
 
 print(build_trees(root, len(s) - 1))
 
