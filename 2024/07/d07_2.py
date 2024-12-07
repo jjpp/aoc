@@ -8,9 +8,11 @@ def can_be_true(t, d):
     if len(d) == 1:
         return t == d[0]
 
-    rest = d[2:]
+    a, b, rest = d[0], d[1], d[2:]
 
-    return can_be_true(t, [d[0] + d[1], *rest]) or can_be_true(t, [d[0] * d[1], *rest]) or can_be_true(t, [int(str(d[0]) + str(d[1])), *rest])
+    return     can_be_true(t, [a + b, *rest]) \
+            or can_be_true(t, [a * b, *rest]) \
+            or can_be_true(t, [int(str(a) + str(b)), *rest])
 
 s = 0
 for l in ls:
