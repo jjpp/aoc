@@ -19,21 +19,23 @@ for j in range(Y):
                 ns[l] = set()
             ns[l] |= {p}
 
+def in_grid(a):
+    return a.imag >= 0 and a.imag < Y and a.real >= 0 and a.real < X
+
+
 for l in ns:
     ps = list(ns[l])
     for i in range(len(ps) - 1):
         for j in range(i + 1, len(ps)):
-            ii, ij = int(ps[i].imag), int(ps[i].real)
-            ji, jj = int(ps[j].imag), int(ps[j].real)
-            di = ji - ii
-            dj = jj - ij
+            a, b = ps[i], ps[j]
+            d = b - a
 
-            a1 = (ii - di) + 1j*(ij - dj)
-            if a1.imag >= 0 and a1.imag < Y and a1.real >= 0 and a1.real < X:
+            a1 = a - d
+            if in_grid(a1):
                 anti |= {a1}
 
-            a2 = (ji + di) + 1j*(jj + dj)
-            if a2.imag >= 0 and a2.imag < Y and a2.real >= 0 and a2.real < X:
+            a2 = b + d
+            if in_grid(a2):
                 anti |= {a2}
 
 print(len(anti))
