@@ -35,6 +35,12 @@ def print_map(rs, s, teststr = "X"):
     return c
 
 s = 0
+# initial solution: 
+# * print out the map after each iteration, together with the iteration number
+# * pipe it to less and visually scan for trees
+# * realise, the tree likely has many robots in a row, search for "XXXXXXX" or
+#   something like that in the stream of maps
+# * soon enough, a picture of a tree appears.. submit the number of iteration.
 while True:
     rs = iterate(rs)
     s += 1
