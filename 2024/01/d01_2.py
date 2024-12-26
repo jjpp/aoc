@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2, original solution
+
 import sys
 
 ls = [l.strip().split(' ') for l in sys.stdin]

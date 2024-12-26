@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys, re
 
 ls = [l.strip() for l in sys.stdin]

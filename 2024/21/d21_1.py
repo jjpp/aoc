@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]
@@ -84,10 +86,10 @@ for l in ls:
     k1 = try_all(N, [l])
     for i in range(2):
         k1 = try_all(D, k1)
-        print(i, len(k1), len(k1[0]) if len(k1) > 0 else None, k1)
+        # print(i, len(k1), len(k1[0]) if len(k1) > 0 else None, k1)
 
     cs = int(l[0:3]) * len(k1[0])
     s += cs
-    print(s, cs, int(l[0:3]), len(k1[0]))
+    # print(s, cs, int(l[0:3]), len(k1[0]))
 
 print(s)

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1 & 2, just lengths
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]

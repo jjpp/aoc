@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# both parts, with comparator built for p2
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]

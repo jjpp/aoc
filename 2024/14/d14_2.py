@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2
+
 import sys
 import re
 
@@ -35,6 +37,7 @@ def print_map(rs, s, teststr = "X"):
     return c
 
 s = 0
+
 # initial solution: 
 # * print out the map after each iteration, together with the iteration number
 # * pipe it to less and visually scan for trees

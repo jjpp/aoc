@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]
@@ -53,4 +55,6 @@ for l in ls:
     ml = minlen(N, l, DEPTH)
     cs = int(l[0:3]) * ml
     s += cs
-    print(s, cs, int(l[0:3]), ml)
+    # print(s, cs, int(l[0:3]), ml)
+
+print(s)

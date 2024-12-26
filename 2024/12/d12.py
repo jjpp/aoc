@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]
@@ -43,7 +45,7 @@ def count(i, j):
                     if not in_grid(x_, y_) or counted.get((x_, y_), None) != blob:
                         perimeter += 1
 
-    print("Found ", c, " with area ", area, perimeter)
+    # print("Found ", c, " with area ", area, perimeter)
     total += area*perimeter
 
 

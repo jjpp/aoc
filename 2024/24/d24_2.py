@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2
+
 import sys, re
 
 ls = [l.strip() for l in sys.stdin]
@@ -136,6 +138,6 @@ def get(var):
         out += g(z)
     return out
 
-print(get('x'), '+', get('y'), '-', get('z'), get('x') + get('y') - get('z'))
+# print(get('x'), '+', get('y'), '-', get('z'), get('x') + get('y') - get('z'))
 print(",".join(sorted(swaps.keys())))
 

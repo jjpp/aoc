@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys
 
 ls = [int(l.strip()) for l in sys.stdin]

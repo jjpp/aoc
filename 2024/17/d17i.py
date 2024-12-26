@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# interactive version, used to import into
+# python REPL and play with different inputs
+
 import sys
 import re
 

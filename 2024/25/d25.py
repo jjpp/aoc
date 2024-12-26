@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 
-import sys, re
+import sys
 from itertools import product
 
 ls = [l.strip() for l in sys.stdin]
-
-def nums(l):
-    return list(map(int, re.findall("-?\\d+", l)))
 
 keys = []
 locks = []

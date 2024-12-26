@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys
 import re
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]
@@ -22,6 +24,5 @@ def is_safe(x):
 
     return False
 
-
-
 print(sum([1 for x in ls if is_safe(x)]))
+

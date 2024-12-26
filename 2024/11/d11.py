@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 1
+
 import sys
 
 ls = [l.strip() for l in sys.stdin]
@@ -23,7 +25,3 @@ for _ in range(25):
 
 print(len(ls))
 
-for _ in range(50):
-    ls = iter(ls)
-
-print(len(ls))

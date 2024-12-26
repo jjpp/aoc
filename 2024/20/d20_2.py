@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# part 2
+
 import sys
 import re
 from collections import defaultdict
@@ -71,7 +73,8 @@ for dist in range(20):
             q = p + d
             if q not in reachable or reachable[q] > dist + 1:
                 reachable[q] = dist + 1
-print(len(reachable))
+
+#print(len(reachable))
 
 for y in range(Y):
     for x in range(X):
