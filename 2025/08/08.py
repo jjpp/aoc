@@ -17,9 +17,14 @@ csm = dict()
 for i in range(N):
     ls[i] = nums(ls[i])
 
+keyof = dict()
+
 for i in range(N - 1):
     for j in range(i + 1, N):
         d[i, j] = math.dist(ls[i], ls[j])
+        if d[i, j] in keyof:
+            print("Non-unique distance ", d[i, j])
+        keyof[d[i, j]] = (i, j)
 
 for i in range(N):
     cs[i] = set([i])
@@ -27,38 +32,27 @@ for i in range(N):
 
 sds = list(sorted(d.values()))
 
-steps = 10
 steps = 1000 if len(ls) > 20 else 10
 step = 0
 
 for sd in sds:
-#    print(f"joining with distance {sd}")
-    ks = [k for k in d if d[k] == sd]
-    print([ks], "@", step)
-    if len(ks) > 1:
-        print("Non-unique distance", ks)
-    (k1, k2) = ks[0]
-
-#    print("Boxes: ", ls[k1], ls[k2])
-#    print(f"Adding from {k2} to {k1}")
-#    print(f"       from {csm[k2]} to {csm[k1]}")
-
-    if csm[k2] < csm[k1]:
-        (k1, k2) = (k2, k1)
+    (k1, k2) = keyof[sd]
 
     if csm[k1] != csm[k2]:
+        if csm[k2] < csm[k1]:
+            (k1, k2) = (k2, k1)
+
         cs[csm[k1]] |= cs[csm[k2]]
         ck2 = cs[csm[k2]]
         csmk2 = csm[k2]
-        cs[csm[k2]] = set()
+        del cs[csm[k2]]
+
         for k in ck2:
             csm[k] = csm[k1]
 
-        if len(cs[csm[k1]]) == N:
+        if len(cs) == 1:
             print(ls[k1][0] * ls[k2][0])
             break
-#    else:
-#        print("Already in the same circuit")
 
     step += 1
     if steps == step: 
